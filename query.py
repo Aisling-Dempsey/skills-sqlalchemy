@@ -20,7 +20,7 @@ init_app()
 
 
 # Get the brand with the **id** of 8.
-
+Brand.query.get(8)
 # Get all models with the **name** Corvette and the **brand_name** Chevrolet.
 
 # Get all models that are older than 1960.

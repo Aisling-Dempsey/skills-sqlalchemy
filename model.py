@@ -22,9 +22,16 @@ class Model(db.Model):
                    autoincrement=True)
     year = db.Column(db.Integer,
                      nullable=False)
-    brand_name = db.Column(db.String(50))
+    brand_name = db.Column(db.String(50), db.ForeignKey('brands.name'))
+
     name = db.Column(db.String(50),
                      nullable=False)
+
+    brand = db.relationship('Brand', backref='models')
+
+
+    def __repr__(self):
+        return "<Model id = %d year = %d brand = %s name = %s>" % (self.id, self.year, self.brand_name, self.name)
 
 
 class Brand(db.Model):
@@ -36,10 +43,17 @@ class Brand(db.Model):
                    primary_key=True,
                    autoincrement=True)
     name = db.Column(db.String(50),
-                     nullable=False)
+                     nullable=False,
+                     unique=True
+                     )
     founded = db.Column(db.Integer)
     headquarters = db.Column(db.String(50))
     discontinued = db.Column(db.Integer)
+
+    def __repr__(self):
+        return "<Brand id = %d Name = %s Founded = %d Headquarters = %s Discontinued = %d>"\
+               % (self.id, self.name, self.founded, self.headquarters, self.discontinued)
+
 
 
 
