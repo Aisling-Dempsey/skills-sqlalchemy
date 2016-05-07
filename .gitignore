@@ -1,0 +1,15 @@
+### Example user template template
+### Example user template
+#secrets
+*secrets.*
+
+#virtual env
+env
+
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+# Created by .ignore support plugin (hsz.mobi)
