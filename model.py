@@ -29,9 +29,9 @@ class Model(db.Model):
 
     brand = db.relationship('Brand', backref='models')
 
-
     def __repr__(self):
-        return "<Model id = %d year = %d brand = %s name = %s>" % (self.id, self.year, self.brand_name, self.name)
+        return "<Model id = %d year = %d brand = %s name = %s>"\
+               % (self.id, self.year, self.brand_name, self.name)
 
 
 class Brand(db.Model):
@@ -51,8 +51,9 @@ class Brand(db.Model):
     discontinued = db.Column(db.Integer)
 
     def __repr__(self):
-        return "<Brand id = %d Name = %s Founded = %d Headquarters = %s Discontinued = %d>"\
-               % (self.id, self.name, self.founded, self.headquarters, self.discontinued)
+        # casting nullable fields as strings so they will output "None" instead of throwing an error
+        return "<Brand id = %d Name = %s Founded = %s Headquarters = %s Discontinued = %s>"\
+               % (self.id, self.name, str(self.founded), str(self.headquarters), str(self.discontinued))
 
 
 
